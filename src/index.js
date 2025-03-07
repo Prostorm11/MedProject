@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import SignupScreen from './SignUp/signup';
+/* import SignupScreen from './SignUp/signup'; */
+import LandingPage from './LandingPage/landing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SignupScreen></SignupScreen>
+    <LandingPage></LandingPage>
   </React.StrictMode>
 );
 

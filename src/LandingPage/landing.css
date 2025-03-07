@@ -1,0 +1,133 @@
+/* Ensure the mainboard takes up the full screen */
+*{
+    margin: 0;
+    padding: 0;
+}
+.mainboard2 {
+    display: flex;  
+    flex-direction: column;
+    min-height: 100vh;  /* Full screen height */
+    max-width: 100vw;  /* Full width */
+   
+}
+
+/* Title section */
+.title {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Ensures it doesn’t get too wide */
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.title h1 {
+    font-size: 40px;
+}
+
+/* Information section */
+.information {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    /* width: 100%; */
+    margin: 0px 20px 0px 20px;
+    max-width: 100vw;
+    align-items: center;
+}
+
+/* First paragraph section */
+.p1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 30px;
+   
+}
+
+/* Ensure sub-sections are aligned properly */
+.p1sub1, .p1sub2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.p1sub2{
+    font-size: 13px;
+    color: rgba(0, 0, 0,0.6);
+}
+
+/* Styling for text */
+.p1text {
+    font-size: 35px;
+    font-weight: 500;
+
+}
+
+.highlight1 {
+    color: rgba(0, 40, 104, 1);
+}
+.highlight2 {
+    color: rgba(191, 10, 48, 1);
+}
+
+/* Button styles */
+.my-button {
+    padding: 10px 40px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgba(0, 40, 104, 1);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+.my-button:hover {
+    background-color: rgba(0, 40, 104, 0.8);
+}
+.p2{
+    
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    width: 100%;
+    height: 400px;
+}
+.col1,.col2,.col3,.col4,.col5{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/2;
+    padding: 5px;
+    justify-content: space-around;
+    align-items: center;
+}
+.col2{
+    grid-column: 2/3;
+}
+.col3{
+    grid-column: 3/4;
+}
+.col4{
+    grid-column: 4/5;
+}
+.col5{
+    grid-column: 5/6;
+}
+.imagecontainer{
+    height: 170px;
+    width: 100%;
+    background-color: red;
+    border-radius: 20px;
+}
+.col3 div{
+    height: 100%;
+}
+img {
+    width: 100%;  /* Ensures image scales down but not up */
+    height: 100%; /* Ensures image does not exceed container */
+    display: block;  
+    object-fit: cover;
+    border-radius: 20px;
+  }
+

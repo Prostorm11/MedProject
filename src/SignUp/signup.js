@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./signup.css";
-import cross from "./images/cross.jpg";
 import med_logo from "./images/med_logo.png";
-import google from "./images/google.jpg"
+import google from "./images/google.jpg";
 
 export default function SignupScreen() {
   const [password, setPassword] = useState("");
@@ -12,7 +11,7 @@ export default function SignupScreen() {
     <div className="mainboard">
       <div className="top">
         <div className="cross">
-          <img src={med_logo}></img>
+          <img src={med_logo} alt="Logo"></img>
         </div>
       </div>
       <div className="middle">
@@ -46,8 +45,11 @@ export default function SignupScreen() {
           </p>
           <a>
             <div className="google_box">
-              <img src={google}></img>
+              <img src={google} alt="Google"></img>
             </div>
+          </a>
+          <a href="www.google.com" className="already">
+            <p style={{ fontSize: 10, fontStyle: "italic", color: "blue" }}>already have account?</p>
           </a>
         </div>
       </div>
