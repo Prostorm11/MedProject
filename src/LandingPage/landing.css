@@ -131,7 +131,7 @@ img {
   border-radius: 20px;
 }
 .p3 {
-  height: 400px;
+  height: 350px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -141,12 +141,38 @@ img {
   width: 50%;
   position: relative;
 }
+.botimage{
+    object-fit: contain;
+    width: 100%;
+}
 .simplified {
   height: 100%;
   width: 50%;
   box-sizing: border-box;
   padding: 10px;
-  background-color: blue;
+ /*  background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    font-size: 30px; 
+    font-weight: bold;
+    color: rgb(0, 40, 104);
+    
+}
+#healthtext{
+    color: rgba(191, 10, 48,1);
+}
+
+#textsub{
+    font-size: 10px;
+    font-weight: 400;
+    color: gray;
 }
 .bar, .accuracy {
   position: absolute;
@@ -158,10 +184,34 @@ img {
   border-radius: 20px;
 }
 .accuracy{
-    left: 0%;
+    left: 10%;
     top: 70%;
     border-radius: 0;
     width: 100px;
     height: 100px;
     border-color: rgb(149, 149, 247);
+}
+.numbers{
+    display: grid;
+    height: 30%;
+    width: 100%;
+    grid-template-columns: repeat(3,1fr);
+}
+.num{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 30px;
+    color: rgba(191, 10, 48,1);
+    font-weight: bold;
+}
+.words{
+    font-size: 10px;
+    padding: 2px;
+    font-weight: 400;
+    color: gray;
 }

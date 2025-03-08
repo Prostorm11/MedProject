@@ -76,7 +76,7 @@ export default function LandingPage() {
         </div>
         <div className="p3">
           <div className="bot">
-            <img src="/bot.jpg"></img>
+            <img src="/bot.jpg" className="botimage"></img>
             <div className="bar">
               <img src="/barAI.jpg"></img>
             </div>
@@ -84,7 +84,41 @@ export default function LandingPage() {
               <img src="/accuracy.jpg"></img>
             </div>
           </div>
-          <div className="simplified"></div>
+          <div className="simplified">
+            <div className="text">
+              <div>
+                <p id="healthtext">Healthcare Simplified!</p>
+              </div>
+              <div>
+                <p>Get Instant AI-Powered</p>
+                <p>Assistance</p>
+              </div>
+              <div>
+                <p id="textsub">
+                  MedAssist - Get instant AI-Powered healthcare assistance. With
+                  advanced AI and expert insights, we provide accurate health
+                  assessments, personalized recommendations, and seamless access
+                  to medical resources worldwide. Let our AI-driven system
+                  handle the complexities so you can focus on your well-being
+                  with confidence.
+                </p>
+              </div>
+            </div>
+            <div className="numbers">
+              <div className="num">
+                <p>95%</p>
+                <p className="words">Accuracy In Health Insights</p>
+              </div>
+              <div className="num">
+              <p>100+</p>
+              <p className="words">Accuracy In Health Insights</p>
+              </div>
+              <div className="num">
+              <p>24/7</p>
+              <p className="words">Accuracy In Health Insights</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
