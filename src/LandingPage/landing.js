@@ -6,6 +6,7 @@ import himage5 from "./images/himage5.jpg";
 import himage7 from "./images/himage7.jpg";
 import himage4 from "./images/himage4.jpg";
 import himage3 from "./images/himage3.jpg";
+import himage6 from "./images/himage6.jpg";
 
 export default function LandingPage() {
   return (
@@ -51,7 +52,7 @@ export default function LandingPage() {
               <img src={himage2}></img>
             </div>
             <div className="imagecontainer">
-            <img src={himage3}></img>
+              <img src={himage3}></img>
             </div>
           </div>
           <div className="col3">
@@ -63,13 +64,27 @@ export default function LandingPage() {
             <div className="imagecontainer">
               <img src={himage5}></img>
             </div>
-            <div className="imagecontainer"></div>
+            <div className="imagecontainer">
+              <img src={himage6}></img>
+            </div>
           </div>
           <div className="col5">
             <div className="imagecontainer">
               <img src={himage7}></img>
             </div>
           </div>
+        </div>
+        <div className="p3">
+          <div className="bot">
+            <img src="/bot.jpg"></img>
+            <div className="bar">
+              <img src="/barAI.jpg"></img>
+            </div>
+            <div className="accuracy">
+              <img src="/accuracy.jpg"></img>
+            </div>
+          </div>
+          <div className="simplified"></div>
         </div>
       </div>
     </div>
