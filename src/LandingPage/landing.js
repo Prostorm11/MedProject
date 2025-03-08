@@ -110,13 +110,39 @@ export default function LandingPage() {
                 <p className="words">Accuracy In Health Insights</p>
               </div>
               <div className="num">
-              <p>100+</p>
-              <p className="words">Accuracy In Health Insights</p>
+                <p>100+</p>
+                <p className="words">Accuracy In Health Insights</p>
               </div>
               <div className="num">
-              <p>24/7</p>
-              <p className="words">Accuracy In Health Insights</p>
+                <p>24/7</p>
+                <p className="words">Accuracy In Health Insights</p>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="p4">
+          <h2 style={{fontSize:25}}>features/products</h2>
+          <div className="p4box">
+            <div className="box">
+              <p style={{ fontWeight: 500 }}>AI Chatbot</p>
+              <p style={{ fontSize: 10 }}>
+                Answers basic health questions, symproms, and first-aid tips.For
+                Health assistamt for general users.
+              </p>
+            </div>
+            <div className="box">
+              <p style={{ fontWeight: 500 }}>Symptom & Medication Checker</p>
+              <p style={{ fontSize: 10 }}>
+                Explains medical reports, drug dosages, side effects, and
+                interactions using NLP-based responses.
+              </p>
+            </div>
+            <div className="box">
+              <p style={{ fontWeight: 500 }}>Medical Document Analyzer</p>
+              <p style={{ fontSize: 10 }}>
+                Explains medical reports, drug dosages, side effects, and
+                interactions using NLP-based responses.
+              </p>
             </div>
           </div>
         </div>
