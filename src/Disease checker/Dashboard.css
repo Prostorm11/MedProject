@@ -1,0 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .mainboard {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+  }
+  .navi {
+    width: 20%;
+    background-color: rgba(250,250,250,1);
+    padding: 20px 10px;
+  }
+  .info {
+    width: 80%;
+    min-height: 100vh;
+  }
