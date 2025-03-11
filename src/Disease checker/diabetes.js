@@ -13,6 +13,17 @@ function Diabetes(props) {
   // Separate state arrays for each question set
   const [selectedOptions1, setSelectedOptions1] = useState(Array(questions.length).fill(null));
   const [selectedOptions2, setSelectedOptions2] = useState(Array(questions2.length).fill(null));
+  const [diseaseSelect,setDiseaseSelect]=useState([true,false,false])
+
+    function handleDisease(value){
+        if(value=="Diabetes"){
+            setDiseaseSelect([true,false,false])
+        }else if(value=="Breast Cancer"){
+            setDiseaseSelect([false,true,false])
+        }else{
+            setDiseaseSelect([false,false,true])
+        }
+    }
 
   const handlePress1 = (index, choice) => {
     setSelectedOptions1((prev) => {
@@ -31,32 +42,8 @@ function Diabetes(props) {
   };
 
   return (
-    <div className="mainboard">
-      <div className="navi"></div>
-      <div className="content">
-        <div id="row1">
-          <p id="welcome">Welcome User!</p>
-          <p className="text1">AI generated insights based on input data</p>
-          <div id="selectD">
-            <p className="text1">
-              Please select one of the diseases below to get insights
-              <br />
-              analysis based on your input
-            </p>
-          </div>
-        </div>
-        <div id="row2">
-          <div id="diseaseSelect">
-            <Pressable onPress={null} padd={10} width={150} selector={false} pressed={false}>
-              Diabetes
-            </Pressable>
-            <Pressable onPress={null} padd={10} width={150} selector={false}>
-              Breast Cancer
-            </Pressable>
-            <Pressable onPress={null} padd={10} width={150} selector={false}>
-              Autism
-            </Pressable>
-          </div>
+    
+          
           <div id="actions">
             <div className="col">
               <div>
@@ -125,10 +112,7 @@ function Diabetes(props) {
               ))}
             </div>
           </div>
-        </div>
-        <div id="row3"></div>
-      </div>
-    </div>
+       
   );
 }
 

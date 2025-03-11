@@ -4,14 +4,14 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 /* import SignupScreen from './SignUp/signup'; */
 /* import LandingPage from './LandingPage/landing'; */
-import Diabetes from './Disease checker/diabetes';
+import Navigation from './Disease checker/naviagation';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <LandingPage></LandingPage> */}
     {/* <SignupScreen></SignupScreen> */}
-    <Diabetes></Diabetes>
+    <Navigation></Navigation>
    
   </React.StrictMode>
 );
