@@ -3,7 +3,8 @@ import "./diabetes.css";
 import Pressable from "./pressable";
 
 function Diabetes(props) {
-  const questions = ["helo", "me", "bb", "weare"];
+  const questions = ["Polyuria","Polydipsia","Vision burning","Irritability","Partial paresis","alopcedia"];
+  const questions2 = ["Sudden weight loss","Weakness","Polyphagia","Genital thrush","Itching","Delayed healing","Muscle stiffness","Obesity"];
   return (
     <div className="mainboard">
       <div className="navi"></div>
@@ -33,9 +34,21 @@ function Diabetes(props) {
           </div>
           <div id="actions">
             <div className="col">
+              <div>
+                <p>Age</p>
+                <div className="fieldbox">
+                    <input></input>
+                    <div style={{background:"blue",width:"20%",height:"100%"}}></div>
+                </div>
+                <p>Gender</p>
+                <div className="fieldbox">
+                    <input></input>
+                    <div style={{background:"blue",width:"20%",height:"100%"}}></div>
+                </div>
+              </div>
               {questions.map((value, index) => (
                 <div>
-                  <p>{value}</p>
+                  <p style={{ marginLeft: 5, marginBottom: 2 }}>{value}</p>
                   <div className="grouping">
                     <Pressable
                       onPress={null}
@@ -57,7 +70,31 @@ function Diabetes(props) {
                 </div>
               ))}
             </div>
-            <div className="col"></div>
+            <div className="col">
+            {questions2.map((value, index) => (
+                <div>
+                  <p style={{ marginLeft: 5, marginBottom: 2 }}>{value}</p>
+                  <div className="grouping">
+                    <Pressable
+                      onPress={null}
+                      padd={10}
+                      width={80}
+                      selector={true}
+                    >
+                      Yes
+                    </Pressable>
+                    <Pressable
+                      onPress={null}
+                      padd={10}
+                      width={80}
+                      selector={true}
+                    >
+                      No
+                    </Pressable>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div id="row3"></div>
