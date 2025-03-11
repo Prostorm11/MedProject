@@ -8,7 +8,7 @@
   height: auto;
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  max-width: 100vw;
 }
 .navi {
   width: 20%;
@@ -18,7 +18,7 @@
 .content {
   width: 80%;
   display: grid;
-  grid-template-rows: 2fr 8fr 2fr;
+  grid-template-rows: 100px 1fr 100px;
   min-height: 100vh;
   padding: 20px 40px;
 }
@@ -70,6 +70,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     height: 100%;
+    column-gap: 50px;
 }
 .fieldbox {
   border: 1px dashed black;
