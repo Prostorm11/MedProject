@@ -1,0 +1,60 @@
+
+  .content {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 100px 1fr 100px;
+    min-height: 100vh;
+    padding: 20px 40px;
+  }
+  
+  #row1 {
+    grid-row: 1 / 2;
+    position: relative;
+    padding: 10px;
+  }
+  
+  #selectD {
+    position: absolute;
+    left: 30px;
+  }
+  
+  #welcome {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .text1 {
+    font-size: 14px;
+    color: gray;
+    font-style: italic;
+  }
+  
+  #row2 {
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1; /* Allows row2 to take up available space */
+    overflow: auto; /* Prevents content from overflowing */
+   
+  }
+  
+  #diseaseSelect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  #row3 {
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
