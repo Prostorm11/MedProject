@@ -24,12 +24,7 @@
     width: 80%;
     min-height: 100vh;
   }
-  .icon-text{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
+  
   .navigators{
     display: flex;
     flex-direction: column;
