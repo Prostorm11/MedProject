@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./navigation.css";
-import Pressable from "./pressable";
+import Pressable from "../../Reusables/pressable";
 import Diabetes from "./diabetes";
-import Breastcancer from "./breastcancer";
-import Autism from "./autism";
+import Breastcancer from "../BreastCancer/breastcancer";
+import Autism from "../Autism/autism";
 
 function Navigation(props) {
   const [diseaseSelect, setDiseaseSelect] = useState([true, false, false]);

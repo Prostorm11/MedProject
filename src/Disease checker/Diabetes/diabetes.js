@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./diabetes.css";
-import Pressable from "./pressable";
+import Pressable from "../../Reusables/pressable";
 
 function Diabetes(props) {
   const questions = [
@@ -11,19 +11,11 @@ function Diabetes(props) {
   ];
 
   // Separate state arrays for each question set
-  const [selectedOptions1, setSelectedOptions1] = useState(Array(questions.length).fill(null));
-  const [selectedOptions2, setSelectedOptions2] = useState(Array(questions2.length).fill(null));
-  const [diseaseSelect,setDiseaseSelect]=useState([true,false,false])
+  const [selectedOptions1, setSelectedOptions1] = useState(Array(questions.length).fill("yes"));
+  const [selectedOptions2, setSelectedOptions2] = useState(Array(questions2.length).fill("yes"));
+  
 
-    function handleDisease(value){
-        if(value=="Diabetes"){
-            setDiseaseSelect([true,false,false])
-        }else if(value=="Breast Cancer"){
-            setDiseaseSelect([false,true,false])
-        }else{
-            setDiseaseSelect([false,false,true])
-        }
-    }
+
 
   const handlePress1 = (index, choice) => {
     setSelectedOptions1((prev) => {
