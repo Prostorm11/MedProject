@@ -1,14 +1,14 @@
 import React from "react";
 import "./squaredPressable.css";
 
-const SquaredPressable = ({ icon, info, icon_color, background, onClick }) => {
+const SquaredPressable = ({ icon, info, icon_color, background, onClick,pressed }) => {
   return (
     <div
       onClick={onClick}
       className="icon-text"
-      style={{ background: background, cursor: "pointer" }} // ✅ Fix background style
+      style={{ background: background, cursor: "pointer", }} 
     >
-      <div style={{ color: icon_color }}> {/* ✅ Apply icon color */}
+      <div style={{ color: icon_color }}>
         {icon}
       </div>
       <p>{info}</p>
