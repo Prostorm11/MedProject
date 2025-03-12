@@ -2,10 +2,16 @@ import { useState } from "react";
 import "./signup.css";
 import med_logo from "./images/med_logo.png";
 import google from "./images/google.jpg";
+import signUp from "./signupbackend";
 
 export default function SignupScreen() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signUp(email, password);
+  };
 
   return (
     <div className="mainboard">
@@ -36,7 +42,7 @@ export default function SignupScreen() {
             />
           </div>
           <div className="button-container">
-            <button className="my-button" onClick={() => {}}>
+            <button className="my-button" onClick={handleSubmit}>
               Sign Up
             </button>
           </div>

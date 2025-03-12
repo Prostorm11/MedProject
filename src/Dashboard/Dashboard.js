@@ -1,6 +1,6 @@
 import React from "react";
 import "./Dashboard.css"
-import Navigation from "./naviagation";
+import Navigation from "../Disease checker/naviagation";
 
 export default function Dashboard() {
   return (

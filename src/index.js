@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-/* import SignupScreen from './SignUp/signup'; */
+import SignupScreen from './SignUp/signup';
 /* import LandingPage from './LandingPage/landing'; */
-import Dashboard from './Disease checker/Dashboard';
+/* import Dashboard from './Dashboard/Dashboard'; */
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <LandingPage></LandingPage> */}
-    {/* <SignupScreen></SignupScreen> */}
-    <Dashboard></Dashboard>
+    <SignupScreen></SignupScreen>
+   {/*  <Dashboard></Dashboard> */}
    
   </React.StrictMode>
 );
