@@ -11,6 +11,7 @@ import Medication from "../MedicationInfo/medication";
 import Chatbot from "../Chatbot/Chatbot";
 import Profile from "../Profile/Profile";
 
+
 export default function Dashboard() {
   const [selectedScreen, setSelectedScreen] = useState("Overview"); // Default screen
   const [pressed,setPressed]=useState([true,false,false,false,false])
