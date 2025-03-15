@@ -1,0 +1,14 @@
+#mainbox{
+    height: 50vh;
+    width: 60vw;
+    background-color: red;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+}
+#questioncolumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
