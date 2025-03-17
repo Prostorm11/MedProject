@@ -1,0 +1,28 @@
+#mainbox{
+    height: 50vh;
+    width: 60vw;
+    background-color: red;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+}
+#questioncolumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+#ask{
+    width: 100%;
+    padding: 0px 20px;
+    height: 70%;
+}
+.questionChange{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 20%;
+}

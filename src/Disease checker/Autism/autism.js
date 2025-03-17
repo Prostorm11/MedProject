@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from "react";
+import Sqauredquestions from "../../Reusables/Sqauredquestions";
+import "./autism.css";
+import { QA } from "./QuestionsAndAnswers";
 
 export default function Autism() {
+  const [index, setIndex] = useState(0);
+  function handlenextQuestion() {
+    if (index<QA.length-1) {
+      setIndex(index + 1);
+    }else{
+      setIndex(index);
+    }
+  }
+  console.log(index)
   return (
-    <div >
-      <p>Yeah Man</p>
+    <div id="autismmain">
+      <Sqauredquestions
+        question={QA[index].Question}
+        options={QA[index].Options}
+        action={handlenextQuestion}
+
+      ></Sqauredquestions>
     </div>
-  )
+  );
 }
