@@ -30,3 +30,10 @@
     flex-direction: column;
     gap: 20px;
   }
+  .full-screen-iframe {
+    width: 100%;  /* Full viewport width */
+    height: 100%; /* Full viewport height */
+    border: none;  /* Removes the border */
+    overflow: hidden; /* Hides scrollbars */
+    display: block;
+  }

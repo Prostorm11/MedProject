@@ -60,5 +60,6 @@ export const QA = [
   },
   { Question: ["Do you have jaundice or any history of jaundice"], Options: ["Male", "Female"] },
   { Question: ["Is There Any Autism History In Family Lineage"], Options: ["Yes", "No"] },
+  { Question: ["Used Our Platform Before?"], Options: ["Yes", "No"] },
   { Question: ["Relation To Victim"], Options: ['Parent', 'Self', 'Relative', 'Health care professional'] },
 ];

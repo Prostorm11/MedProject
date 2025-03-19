@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Report</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Med Assist Logo" class="logo">
+            <span class="header-text">MED ASSIST</span>
+        </header>
+        <h1>Medical Report</h1>
+        <div class="content">
+            <div class="layout">
+                <div class="personal-details">
+                    <h2>Personal Details</h2>
+                    <table>
+                        <tr>
+                            <td><label for="first-name">First Name</label></td>
+                            <td><input type="text" id="first-name" name="first-name"></td>
+                            <td><label for="last-name">Last Name</label></td>
+                            <td><input type="text" id="last-name" name="last-name"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="nationality">Nationality</label></td>
+                            <td><input type="text" id="nationality" name="nationality"></td>
+                            <td><label for="phone-number">Phone Number</label></td>
+                            <td><input type="text" id="phone-number" name="phone-number"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Status</label></td>
+                            <td>
+                                <input type="checkbox" id="divorced" name="status">
+                                <label for="divorced">Divorced</label>
+                                <input type="checkbox" id="married" name="status">
+                                <label for="married">Married</label>
+                                <input type="checkbox" id="single" name="status">
+                                <label for="single">Single</label>
+                                <input type="checkbox" id="others" name="status">
+                                <label for="others">Others</label>
+                            </td>
+                            <td><label for="age">Age</label></td>
+                            <td><input type="text" id="age" name="age" value="32"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="gender">Gender</label></td>
+                            <td><input type="text" id="gender" name="gender" value="Male"></td>
+                            <td><label for="weight">Weight</label></td>
+                            <td><input type="text" id="weight" name="weight"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><label for="height">Height</label></td>
+                            <td><input type="text" id="height" name="height"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="photo-placeholder">
+                    <div class="photo">Photo</div>
+                </div>
+            </div>
+            <div class="medication">
+                <h2>Medication(s)</h2>
+                <table>
+                    <tr>
+                        <th>Medication(s)</th>
+                        <th>Dose</th>
+                        <th>Reason for medication</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="medication-input"></td>
+                        <td><input type="text" class="dose-input"></td>
+                        <td><input type="text" class="reason-input"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="medical-history">
+                <h2>Medical History</h2>
+                <table>
+                    <tr>
+                        <td><label>Blood type</label></td>
+                        <td><input type="text" value="O(+)"></td>
+                        <td><label>Blood Pressure</label></td>
+                        <td>
+                            <input type="text" value="Normal : 120/80 mmHg"><br>
+                            <input type="text" value="Elevated : 120-129/<80 mmHg">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>HB</label></td>
+                        <td><input type="text" value="Negative"></std>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <footer></footer>
+    </div>
+</body>
+</html>

@@ -30,7 +30,9 @@ export default function Dashboard() {
       case "Symptoms Checker":
         return <Disease />;
       case "Medication Info":
-        return <Medication />;
+        return (
+          <iframe src="/medication_info.html" className="full-screen-iframe"/>
+        );
       case "Profile":
         return <Profile />;
       default:
@@ -47,31 +49,36 @@ export default function Dashboard() {
             info="Overview"
             icon={<TbBrandWindowsFilled />}
             onClick={() => handleSelection(0, "Overview")}
-            background={pressed[0] ? "blue" : null}
+            background={pressed[0] ? "white" : null}
+            border={pressed[0] ? "2px dashed blue" : null}
           />
           <SquaredPressable
             info="Chatbot"
             icon={<TbMessageChatbot />}
             onClick={() => handleSelection(1, "Chatbot")}
-            background={pressed[1] ? "blue" : null}
+            background={pressed[1] ? "white" : null}
+            border={pressed[1] ? "2px dashed blue" : null}
           />
           <SquaredPressable
             info="Symptoms Checker"
             icon={<RiFirstAidKitFill />}
             onClick={() => handleSelection(2, "Symptoms Checker")}
-            background={pressed[2] ? "blue" : null}
+            background={pressed[2] ? "white" : null}
+            border={pressed[2] ? "2px dashed blue" : null}
           />
           <SquaredPressable
             info="Medication Info"
             icon={<MdBrush />}
             onClick={() => handleSelection(3, "Medication Info")}
-            background={pressed[3] ? "blue" : null}
+            background={pressed[3] ? "white" : null}
+            border={pressed[3] ? "2px dashed blue" : null}
           />
           <SquaredPressable
             info="Profile"
             icon={<CgProfile />}
             onClick={() => handleSelection(4, "Profile")}
-            background={pressed[4] ? "blue" : null}
+            background={pressed[4] ? "white" : null}
+            border={pressed[4] ? "2px dashed blue" : null}
           />
         </div>
       </div>
