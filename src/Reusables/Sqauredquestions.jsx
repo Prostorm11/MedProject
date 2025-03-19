@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Squaredquestions.css";
 import SquaredPressable from "./squaredPressable";
 import Pressable from "./pressable";
 
-function Sqauredquestions({ question, options, action }) {
+function Sqauredquestions({ question, options, nextQuestion, prevQuestion }) {
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
   return (
     <div id="mainbox">
       <div id="responsecolumn">
         {options.map((item, index) => (
-          <p>{item}</p>
+          
+          <div className="radio_text">
+            <input
+              type="radio"
+              style={{ transform: "scale(1.5)", width: "16px", height: "16px" }}
+              name="options"
+              value={item}
+              checked={selectedOption === item}
+              onChange={handleChange}
+            />
+            <p>{item}</p>
+          </div>
         ))}
       </div>
       <div id="questioncolumn">
@@ -16,9 +32,24 @@ function Sqauredquestions({ question, options, action }) {
           <p>{question}</p>
         </div>
         <div className="questionChange">
-          <Pressable padd={"15px"} height={"10px"} width={"70px"} radius={"10px"}>Prev</Pressable>
-          <Pressable padd={"15px"} height={"10px"} width={"70px"} radius={"10px"}>Next</Pressable>
-          
+          <Pressable
+            padd={"15px"}
+            height={"10px"}
+            width={"70px"}
+            radius={"10px"}
+            onPress={nextQuestion}
+          >
+            Prev
+          </Pressable>
+          <Pressable
+            padd={"15px"}
+            height={"10px"}
+            width={"70px"}
+            radius={"10px"}
+            onPress={prevQuestion}
+          >
+            Next
+          </Pressable>
         </div>
       </div>
     </div>

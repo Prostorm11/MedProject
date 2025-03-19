@@ -43,7 +43,7 @@ export default function Breastcancer() {
         {symptoms1.map((item, index) => (
           <div>
             <p>{item}</p>
-            <Fieldbox></Fieldbox>
+            <Fieldbox placeholder={`Enter ${item}`}></Fieldbox>
           </div>
         ))}
       </div>
@@ -51,7 +51,7 @@ export default function Breastcancer() {
       {symptoms2.map((item, index) => (
           <div>
             <p>{item}</p>
-            <Fieldbox></Fieldbox>
+            <Fieldbox placeholder={`Enter ${item}`}></Fieldbox>
           </div>
         ))}
       </div>

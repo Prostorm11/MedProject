@@ -5,7 +5,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Dashboard from "./Dashboard/Dashboard";
 import { Navigate } from "react-router-dom";
-import LandingPage from "./LandingPage/landing";
+/* import LandingPage from "./LandingPage/landing"; */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

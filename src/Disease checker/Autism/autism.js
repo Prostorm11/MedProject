@@ -12,13 +12,21 @@ export default function Autism() {
       setIndex(index);
     }
   }
+  function handleprevQuestion() {
+    if (index>0) {
+      setIndex(index - 1);
+    }else{
+      setIndex(index);
+    }
+  }
   console.log(index)
   return (
     <div id="autismmain">
       <Sqauredquestions
         question={QA[index].Question}
         options={QA[index].Options}
-        action={handlenextQuestion}
+        nextQuestion={handleprevQuestion}
+        prevQuestion={handlenextQuestion}
 
       ></Sqauredquestions>
     </div>
