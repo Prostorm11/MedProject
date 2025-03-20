@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Fieldbox from "../../Reusables/Fieldbox";
 import "./breastCancer.css";
 
-export default function Breastcancer() {
+export default function Breastcancer({setBreastdic}) {
   const symptoms1 = [
     "radius1", "texture1", "perimeter1", "area1", "smoothness1",
     "compactness1", "concavity1", "concave_points1", "symmetry1",
@@ -25,6 +25,11 @@ export default function Breastcancer() {
       ...prevState,
       [key]: value
     }));
+    setBreastdic(prevState => ({
+      ...prevState,
+      [key]: value
+    }));
+   
   };
 
   return (
