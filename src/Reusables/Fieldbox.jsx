@@ -1,10 +1,15 @@
 import React from "react";
-import "./Fieldbox.css"
+import "./Fieldbox.css";
 
-function Fieldbox({width,placeholder}) {
+function Fieldbox({ width, placeholder, value, onChange }) {
   return (
-    <div className="fieldbox" style={{width:width}}>
-      <input type="number" placeholder={placeholder}/>
+    <div className="fieldbox" style={{ width: width }}>
+      <input 
+        type="number" 
+        placeholder={placeholder} 
+        value={value} 
+        onChange={onChange} 
+      />
       <div
         style={{
           background: "rgba(7,142,255,1)",

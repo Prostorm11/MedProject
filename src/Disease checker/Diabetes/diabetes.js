@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./diabetes.css";
 import Pressable from "../../Reusables/pressable";
 
-function Diabetes(props) {
+function Diabetes({ setDiabetesDic }) {
   const questions = [
     "Polyuria",
     "Polydipsia",
@@ -22,28 +22,55 @@ function Diabetes(props) {
     "Obesity",
   ];
 
-  // Separate state arrays for each question set
-  const [selectedOptions1, setSelectedOptions1] = useState(
-    Array(questions.length).fill("yes")
-  );
-  const [selectedOptions2, setSelectedOptions2] = useState(
-    Array(questions2.length).fill("yes")
-  );
+  const [selectedOptions1, setSelectedOptions1] = useState({
+    "Polyuria": 1,
+    "Polydipsia": 1,
+    "Vision burning": 1,
+    "Irritability": 1,
+    "Partial paresis": 1,
+    "Alopecia": 1,
+  });
 
-  const handlePress1 = (index, choice) => {
+  const [selectedOptions2, setSelectedOptions2] = useState({
+    "Sudden weight loss": 1,
+    "Weakness": 1,
+    "Polyphagia": 1,
+    "Genital thrush":1,
+    "Itching": 1,
+    "Delayed healing": 1,
+    "Muscle stiffness": 1,
+    "Obesity": 1,
+  });
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("Male");
+ 
+
+  const handlePress1 = (value, choice) => {
     setSelectedOptions1((prev) => {
-      const updatedSelections = [...prev];
-      updatedSelections[index] = choice;
+      const updatedSelections = { ...prev, [value]: choice };
+      setDiabetesDic((prevDic) => ({ ...prevDic, ...updatedSelections }));
       return updatedSelections;
     });
   };
 
-  const handlePress2 = (index, choice) => {
+  const handlePress2 = (value, choice) => {
     setSelectedOptions2((prev) => {
-      const updatedSelections = [...prev];
-      updatedSelections[index] = choice;
+      const updatedSelections = { ...prev, [value]: choice };
+      setDiabetesDic((prevDic) => ({ ...prevDic, ...updatedSelections }));
       return updatedSelections;
     });
+  };
+
+  const handleAgeChange = (e) => {
+    const newAge = e.target.value;
+    setAge(newAge);
+    setDiabetesDic((prevDic) => ({ ...prevDic, age: newAge }));
+  };
+
+  const handleGenderChange = (e) => {
+    const newGender = e.target.value;
+    setGender(newGender);
+    setDiabetesDic((prevDic) => ({ ...prevDic, gender: newGender }));
   };
 
   return (
@@ -52,28 +79,25 @@ function Diabetes(props) {
         <div>
           <p>Age</p>
           <div className="fieldbox">
-            <input type="number" placeholder="Age" />
-            <div
-              style={{
-                background: "rgba(7,142,255,1)",
-                width: "20%",
-                height: "100%",
-              }}
-            ></div>
+            <input
+              type="number"
+              placeholder="Age"
+              value={age}
+              onChange={handleAgeChange}
+            />
+            <div style={{ background: "rgba(7,142,255,1)", width: "20%", height: "100%" }}></div>
           </div>
           <p>Gender</p>
           <div className="fieldbox">
-            <select style={{width:"80%",border:"none"}}>
-              <option value="apple">Male</option>
-              <option value="banana">Female</option>
+            <select
+              style={{ width: "80%", border: "none" }}
+              value={gender}
+              onChange={handleGenderChange}
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
-            <div
-              style={{
-                background: "rgba(7,142,255,1)",
-                width: "20%",
-                height: "100%",
-              }}
-            ></div>
+            <div style={{ background: "rgba(7,142,255,1)", width: "20%", height: "100%" }}></div>
           </div>
         </div>
         {questions.map((value, index) => (
@@ -81,20 +105,20 @@ function Diabetes(props) {
             <p style={{ marginLeft: 5, marginBottom: 2 }}>{value}</p>
             <div className="grouping">
               <Pressable
-                onPress={() => handlePress1(index, "yes")}
+                onPress={() => handlePress1(value, 1)}
                 padd={10}
                 width={80}
                 selector={true}
-                pressed={selectedOptions1[index] === "yes"}
+                pressed={selectedOptions1[value] === 1}
               >
                 Yes
               </Pressable>
               <Pressable
-                onPress={() => handlePress1(index, "no")}
+                onPress={() => handlePress1(value, 0)}
                 padd={10}
                 width={80}
                 selector={true}
-                pressed={selectedOptions1[index] === "no"}
+                pressed={selectedOptions1[value] === 0}
               >
                 No
               </Pressable>
@@ -108,20 +132,20 @@ function Diabetes(props) {
             <p style={{ marginLeft: 5, marginBottom: 2 }}>{value}</p>
             <div className="grouping">
               <Pressable
-                onPress={() => handlePress2(index, "yes")}
+                onPress={() => handlePress2(value, 1)}
                 padd={10}
                 width={80}
                 selector={true}
-                pressed={selectedOptions2[index] === "yes"}
+                pressed={selectedOptions2[value] === 1}
               >
                 Yes
               </Pressable>
               <Pressable
-                onPress={() => handlePress2(index, "no")}
+                onPress={() => handlePress2(value, 0)}
                 padd={10}
                 width={80}
                 selector={true}
-                pressed={selectedOptions2[index] === "no"}
+                pressed={selectedOptions2[value] === 0}
               >
                 No
               </Pressable>

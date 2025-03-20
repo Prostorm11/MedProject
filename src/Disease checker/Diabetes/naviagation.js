@@ -1,3 +1,4 @@
+// Navigation.js
 import React, { useState } from "react";
 import "./navigation.css";
 import Pressable from "../../Reusables/pressable";
@@ -7,17 +8,37 @@ import Autism from "../Autism/autism";
 
 function Navigation(props) {
   const [diseaseSelect, setDiseaseSelect] = useState([true, false, false]);
+  const [diabetesDic, setDiabetesDic] = useState({});
 
   function handleDisease(value) {
-    if (value == "Diabetes") {
+    if (value === "Diabetes") {
       setDiseaseSelect([true, false, false]);
-    } else if (value == "Breast Cancer") {
+    } else if (value === "Breast Cancer") {
       setDiseaseSelect([false, true, false]);
     } else {
       setDiseaseSelect([false, false, true]);
     }
   }
-
+  const handlePredict = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(diabetesDic),  // Sending collected data to backend
+      });
+  
+      const data = await response.json();
+      if (data.error) {
+        console.error("Error:", data.error);
+      } else {
+        console.log("Prediction:", data.prediction);
+        alert(`Predicted Outcome: ${data.prediction}`);
+      }
+    } catch (error) {
+      console.error("API Call Error:", error);
+    }
+  };
+  
   return (
     <div className="content">
       <div id="row1">
@@ -61,13 +82,13 @@ function Navigation(props) {
             Autism
           </Pressable>
         </div>
-        {diseaseSelect[0] && <Diabetes></Diabetes>}
+        {diseaseSelect[0] && <Diabetes setDiabetesDic={setDiabetesDic}></Diabetes>}
         {diseaseSelect[1] && <Breastcancer></Breastcancer>}
         {diseaseSelect[2] && <Autism></Autism>}
       </div>
       <div id="row3">
         <Pressable
-          onPress={() => null}
+          onPress={handlePredict}
           padd={10}
           width={200}
           background={"rgba(0,40,104,1)"}
