@@ -11,7 +11,8 @@ function Navigation(props) {
   const [breastCancerdic, setBreastCancerdic] = useState({});
   const [autismray, setAutismray] = useState([]);
   const [predictionResult, setPredictionResult] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Controls modal visibility
+  const [probability, setProbability] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   function handleDisease(value) {
     if (value === "Diabetes") {
@@ -31,7 +32,7 @@ function Navigation(props) {
         ? "Breast Cancer"
         : "Autism";
       let requestData = { disease: selectedDisease };
-
+  
       if (selectedDisease === "Diabetes") {
         requestData = { ...diabetesDic, disease: "Diabetes" };
       } else if (selectedDisease === "Breast Cancer") {
@@ -39,29 +40,36 @@ function Navigation(props) {
       } else {
         requestData = { disease: "Autism", features: autismray };
       }
-
+  
       const response = await fetch("http://127.0.0.1:5000/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
       });
-
+  
       const data = await response.json();
       if (data.error) {
         console.error("Error:", data.error);
         setPredictionResult(`Error: ${data.error}`);
+        setProbability(null);
       } else {
-        console.log("Prediction:", data.prediction);
+        console.log("Prediction:", data.prediction, "Probability:", data.probability);
+        const probabilityOfHavingDisease = data.probability[1]
         setPredictionResult(`Predicted Outcome: ${data.prediction}`);
+        setProbability(`Probability of having ${selectedDisease}: ${(probabilityOfHavingDisease * 100).toFixed(2)}%`);
       }
-
-      setIsModalOpen(true); // Open modal after prediction
+  
+      setIsModalOpen(true);
     } catch (error) {
       console.error("API Call Error:", error);
       setPredictionResult("API Error: Unable to make the request.");
-      setIsModalOpen(true); // Show error in modal
+      setProbability(null);
+      setIsModalOpen(true);
     }
   };
+  
+
+  
 
   return (
     <div className="content">
@@ -129,10 +137,10 @@ function Navigation(props) {
             <div className="predictDetail">
               <h3>Prediction Result</h3>
               <p>{predictionResult}</p>
+              <p>{probability}</p>
             </div>
             <div className="doctorRequest">
-              <h3>Prediction Result</h3>
-              <p>{predictionResult}</p>
+              <p>Call Doctor</p>
             </div>
           </div>
         </div>

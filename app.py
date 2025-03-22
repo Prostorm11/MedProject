@@ -10,19 +10,18 @@ CORS(app)
 # Load trained models
 diabetes_model = joblib.load("model_diabetes.joblib")  
 breast_cancer_model = joblib.load("model_breast_cancer.joblib")  
-autism_pipeline = joblib.load("autism_model.joblib")  # Load pipeline instead of just model
+autism_pipeline = joblib.load("autism_model.joblib")  
 
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
-        data = request.json  # Get data from frontend
-        disease_type = data.get("disease")  # Identify the disease type
+        data = request.json  
+        disease_type = data.get("disease")  
 
         if disease_type == "Diabetes":
-            # Extract features for Diabetes prediction
             features = [
                 int(data["age"]),
-                1 if data["gender"].lower() == "male" else 0,  # Handle gender case sensitivity
+                1 if data["gender"].lower() == "male" else 0,  
                 int(data["Polyuria"]),
                 int(data["Polydipsia"]),
                 int(data["Vision burning"]),
@@ -40,9 +39,9 @@ def predict():
             ]
             input_array = np.array(features).reshape(1, -1)
             prediction = diabetes_model.predict(input_array)
+            probability = diabetes_model.predict_proba(input_array)[0].tolist()  
 
         elif disease_type == "Breast Cancer":
-            # Extract features for Breast Cancer prediction
             features = [float(data[key]) for key in [
                 "radius1", "texture1", "perimeter1", "area1", "smoothness1",
                 "compactness1", "concavity1", "concave_points1", "symmetry1", "fractal_dimension1",
@@ -53,29 +52,25 @@ def predict():
             ]]
             input_array = np.array(features).reshape(1, -1)
             prediction = breast_cancer_model.predict(input_array)
+            probability = breast_cancer_model.predict_proba(input_array)[0].tolist()  
 
         elif disease_type == "Autism":
-            # Define expected feature names
             feature_names = [
                 "A1_Score", "A2_Score", "A3_Score", "A4_Score", "A5_Score",
                 "A6_Score", "A7_Score", "A8_Score", "A9_Score", "A10_Score",
                 "age", "gender", "ethnicity", "jaundice", "autism", "used_app_before", "relation"
             ]
-            
-            # Create a DataFrame for structured input
             input_df = pd.DataFrame([data["features"]], columns=feature_names)
-            
-            # Debugging: Print input before transformation
-            print("Input DataFrame Before Transformation:")
-            print(input_df)
-
-            # Predict using the pipeline (which includes OneHotEncoder & other transformations)
             prediction = autism_pipeline.predict(input_df)
+            probability = autism_pipeline.predict_proba(input_df)[0].tolist()  
 
         else:
             return jsonify({"error": "Invalid disease type"}), 400
 
-        return jsonify({"prediction": int(prediction[0])})
+        return jsonify({
+            "prediction": int(prediction[0]),
+            "probability": probability  
+        })
 
     except ValueError as ve:
         return jsonify({"error": f"Invalid data format: {str(ve)}"}), 400
