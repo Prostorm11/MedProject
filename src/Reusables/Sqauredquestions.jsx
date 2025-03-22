@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Squaredquestions.css";
-import SquaredPressable from "./squaredPressable";
 import Pressable from "./pressable";
 
-function Sqauredquestions({ question, options, nextQuestion, prevQuestion }) {
-  const [selectedOption, setSelectedOption] = useState("");
-
+function Sqauredquestions({ question, options, nextQuestion, prevQuestion, action, setSelectedOption, selectedOption }) {
+  
   const handleChange = (event) => {
-    setSelectedOption(event.target.value);
+    const newValue = event.target.value;
+    setSelectedOption(newValue); // Update selected option
+
+    // Ensure updated value is passed
+    action(newValue);
   };
+
   return (
     <div id="mainbox">
       <div id="responsecolumn">
         {options.map((item, index) => (
-          
-          <div className="radio_text">
+          <div className="radio_text" key={index}>
             <input
               type="radio"
               style={{ transform: "scale(1.5)", width: "16px", height: "16px" }}
               name="options"
               value={item}
               checked={selectedOption === item}
-              onChange={handleChange}
+              onChange={handleChange} // Call function on change
             />
             <p>{item}</p>
           </div>
@@ -32,22 +34,10 @@ function Sqauredquestions({ question, options, nextQuestion, prevQuestion }) {
           <p>{question}</p>
         </div>
         <div className="questionChange">
-          <Pressable
-            padd={"15px"}
-            height={"10px"}
-            width={"70px"}
-            radius={"10px"}
-            onPress={nextQuestion}
-          >
+          <Pressable padd={"15px"} height={"10px"} width={"70px"} radius={"10px"} onPress={prevQuestion}>
             Prev
           </Pressable>
-          <Pressable
-            padd={"15px"}
-            height={"10px"}
-            width={"70px"}
-            radius={"10px"}
-            onPress={prevQuestion}
-          >
+          <Pressable padd={"15px"} height={"10px"} width={"70px"} radius={"10px"} onPress={nextQuestion}>
             Next
           </Pressable>
         </div>

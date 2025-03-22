@@ -10,6 +10,7 @@ function Navigation(props) {
   const [diseaseSelect, setDiseaseSelect] = useState([true, false, false]);
   const [diabetesDic, setDiabetesDic] = useState({});
   const [breastCancerdic,setBreastCancerdic]=useState({})
+  const [autismray,setAutismray]=useState([])
 
   function handleDisease(value) {
     if (value === "Diabetes") {
@@ -95,11 +96,11 @@ function Navigation(props) {
         </div>
         {diseaseSelect[0] && <Diabetes setDiabetesDic={setDiabetesDic}></Diabetes>}
         {diseaseSelect[1] && <Breastcancer setBreastdic={setBreastCancerdic}></Breastcancer>}
-        {diseaseSelect[2] && <Autism></Autism>}
+        {diseaseSelect[2] && <Autism autismray={autismray} setAutismray={setAutismray}></Autism>}
       </div>
       <div id="row3">
         <Pressable
-          onPress={handlePredict}
+          onPress={()=>console.log(autismray)}
           padd={10}
           width={200}
           background={"rgba(0,40,104,1)"}

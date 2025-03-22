@@ -59,7 +59,7 @@ export default function Breastcancer({setBreastdic}) {
         ))}
       </div>
 
-      <button onClick={() => console.log(cancerdic)}>Submit</button>
+      
     </div>
   );
 }
