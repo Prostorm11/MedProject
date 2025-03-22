@@ -30,6 +30,8 @@ function Navigation(props) {
         requestData = { ...diabetesDic, disease: "Diabetes" };
       } else if (selectedDisease === "Breast Cancer") {
         requestData = { ...breastCancerdic, disease: "Breast Cancer" };
+      } else {
+        requestData = { disease: "Autism", features: autismray };  // ✅ Ensure 'features' is included
       }
   
       const response = await fetch("http://127.0.0.1:5000/predict", {
@@ -41,12 +43,14 @@ function Navigation(props) {
       const data = await response.json();
       if (data.error) {
         console.error("Error:", data.error);
+        alert(`Error: ${data.error}`);
       } else {
         console.log("Prediction:", data.prediction);
         alert(`Predicted Outcome: ${data.prediction}`);
       }
     } catch (error) {
       console.error("API Call Error:", error);
+      alert("API Error: Unable to make the request.");
     }
   };
   
@@ -100,7 +104,7 @@ function Navigation(props) {
       </div>
       <div id="row3">
         <Pressable
-          onPress={()=>console.log(autismray)}
+          onPress={handlePredict}
           padd={10}
           width={200}
           background={"rgba(0,40,104,1)"}

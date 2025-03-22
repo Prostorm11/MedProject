@@ -16,14 +16,26 @@ export default function Autism({ autismray, setAutismray }) {
   function handleNextQuestion() {
     if (index < QA.length - 1) {
       setIndex(index + 1);
-      setSelectedOption(autismray[index + 1] || ""); // Load next answer or reset if not answered
+      let nextAnswer = autismray[index + 1] ?? ""; // Default to empty string if undefined
+
+      if (QA[index + 1].Options.includes("True") && QA[index + 1].Options.includes("False")) {
+        setSelectedOption(nextAnswer === 1 ? "True" : nextAnswer === 0 ? "False" : "");
+      } else {
+        setSelectedOption(nextAnswer !== "" ? nextAnswer.toString() : ""); // Ensure valid string
+      }
     }
   }
 
   function handlePrevQuestion() {
     if (index > 0) {
       setIndex(index - 1);
-      setSelectedOption(autismray[index - 1] || ""); // Load previous answer or reset
+      let prevAnswer = autismray[index - 1] ?? ""; // Default to empty string if undefined
+
+      if (QA[index - 1].Options.includes("True") && QA[index - 1].Options.includes("False")) {
+        setSelectedOption(prevAnswer === 1 ? "True" : prevAnswer === 0 ? "False" : "");
+      } else {
+        setSelectedOption(prevAnswer !== "" ? prevAnswer.toString() : ""); // Ensure valid string
+      }
     }
   }
 
