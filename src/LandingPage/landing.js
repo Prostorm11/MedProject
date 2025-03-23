@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./landing.css";
 import himage1 from "./images/himage1.jpg";
 import himage2 from "./images/himage2.jpg";
@@ -7,8 +7,30 @@ import himage7 from "./images/himage7.jpg";
 import himage4 from "./images/himage4.jpg";
 import himage3 from "./images/himage3.jpg";
 import himage6 from "./images/himage6.jpg";
+import community from "./images/Community.jpg";
+import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
+import signUp from "./signupbackend";
 
 export default function LandingPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+
+  const [loading, setLoading] = useState(false);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      await signUp(formData.email, formData.password);
+      setLoading(false);
+    };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  function handleContact() {
+    setIsModalOpen(true);
+  }
   return (
     <div className="mainboard2">
       <div className="title">
@@ -36,7 +58,7 @@ export default function LandingPage() {
             </p>
           </div>
           <div>
-            <button className="my-button" onClick={() => {}}>
+            <button className="my-button" onClick={handleContact}>
               Try MedAssist
             </button>
           </div>
@@ -121,7 +143,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="p4">
-          <h2 style={{fontSize:25}}>features/products</h2>
+          <h2 style={{ fontSize: 25 }}>features/products</h2>
           <div className="p4box">
             <div className="box">
               <p style={{ fontWeight: 500 }}>AI Chatbot</p>
@@ -145,6 +167,71 @@ export default function LandingPage() {
               </p>
             </div>
           </div>
+        </div>
+        <div style={{ width: "100%" }}>
+          <img src={community}></img>
+          {isModalOpen && (
+  <div className="modal-overlay">
+    <div className="modal">
+      <span className="close" onClick={() => setIsModalOpen(false)}>
+        &times;
+      </span>
+      <h2>Sign Up</h2>
+
+      {/* Input Fields */}
+      <div className="modal-input">
+        <label>Name:</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="modal-input">
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="modal-input">
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+      </div>
+
+      {/* Sign Up Button */}
+      <div className="modal-buttons">
+        <button className="signup-btn" onClick={handleSubmit}>{loading ? 'Please wait...' : 'Sign Up'}</button>
+      </div>
+
+      {/* Continue with Google */}
+      <div className="google-auth">
+        <button className="google-btn">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+            alt="Google Logo"
+            className="google-logo"
+          />
+          Continue with Google
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
         </div>
       </div>
     </div>

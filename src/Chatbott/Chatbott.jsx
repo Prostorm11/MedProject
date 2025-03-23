@@ -1,12 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
+<<<<<<< HEAD
 import {PaperAirplaneIcon, UserIcon, ArrowPathIcon, TrashIcon,
 } from "@heroicons/react/24/solid";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
+=======
+>>>>>>> a46fb2ad496fc2929f1204093d3983a12bd17311
 import { sendMessageToGroq } from "./Ai";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+<<<<<<< HEAD
+=======
+import "./Chatbott.css"; // Import the CSS file
+>>>>>>> a46fb2ad496fc2929f1204093d3983a12bd17311
 
 function ChatBott() {
   const [messages, setMessages] = useState([]);
@@ -14,7 +21,10 @@ function ChatBott() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+<<<<<<< HEAD
   // Scroll to bottom whenever messages change
+=======
+>>>>>>> a46fb2ad496fc2929f1204093d3983a12bd17311
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -27,6 +37,7 @@ function ChatBott() {
     e.preventDefault();
     if (input.trim() === "") return;
 
+<<<<<<< HEAD
     // Add user message
     const userMessage = { text: input, sender: "user", timestamp: new Date() };
     setMessages([...messages, userMessage]);
@@ -55,6 +66,23 @@ function ChatBott() {
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
       console.error("Error in chat:", error);
+=======
+    const userMessage = { text: input, sender: "user", timestamp: new Date() };
+    setMessages([...messages, userMessage]);
+    setInput("");
+    setIsLoading(true);
+
+    try {
+      const response = await sendMessageToGroq(input);
+      const aiMessage = { text: response, sender: "ai", timestamp: new Date() };
+      setMessages((prevMessages) => [...prevMessages, aiMessage]);
+    } catch (error) {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: "Error processing request.", sender: "ai", timestamp: new Date() }
+      ]);
+      console.error("Chat error:", error);
+>>>>>>> a46fb2ad496fc2929f1204093d3983a12bd17311
     } finally {
       setIsLoading(false);
     }
@@ -69,6 +97,7 @@ function ChatBott() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen flex flex-col bg-gray-50">
 
       <header className="bg-white border-b border-gray-200 shadow-sm">
@@ -191,6 +220,67 @@ function ChatBott() {
             </button>
           </form>
         </div>
+=======
+    <div className="chat-container">
+      <header className="chat-header">
+        <h1>🤖 Chatbot</h1>
+        <button onClick={clearChat} className="clear-chat">Clear Chat</button>
+      </header>
+
+      <div className="chat-messages">
+        {messages.length === 0 ? (
+          <div className="empty-chat">Start a conversation with the AI</div>
+        ) : (
+          messages.map((message, index) => (
+            <div key={index} className={`chat-message ${message.sender}`}>
+              <div className="message-header">
+                <span className="sender-name">{message.sender === "user" ? "You" : "AI"}</span>
+                <span className="message-time">{formatTime(message.timestamp)}</span>
+              </div>
+              {message.sender === "user" ? (
+                <p className="message-text">{message.text}</p>
+              ) : (
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    code({ inline, className, children, ...props }) {
+                      const match = /language-(\w+)/.exec(className || "");
+                      return !inline && match ? (
+                        <SyntaxHighlighter style={solarizedlight} language={match[1]} {...props}>
+                          {String(children).replace(/\n$/, "")}
+                        </SyntaxHighlighter>
+                      ) : (
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}
+                >
+                  {message.text}
+                </ReactMarkdown>
+              )}
+            </div>
+          ))
+        )}
+        {isLoading && <div className="loading">AI is thinking...</div>}
+        <div ref={messagesEndRef} />
+      </div>
+
+      <div className="chat-input">
+        <form onSubmit={handleSubmit} className="input-form">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type your message..."
+            disabled={isLoading}
+          />
+          <button type="submit" disabled={isLoading || input.trim() === ""}>
+            Send
+          </button>
+        </form>
+>>>>>>> a46fb2ad496fc2929f1204093d3983a12bd17311
       </div>
     </div>
   );

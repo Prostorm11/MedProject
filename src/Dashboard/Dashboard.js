@@ -14,6 +14,9 @@ import Chatbot from "../Chatbot/Chatbot";
 import Profile from "../Profile/Profile";
 import Appointment from "../Appointment/Appointment";
 import Map from "../Maps/Map";
+import ChatBott from "../Chatbott/Chatbott";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 
 export default function Dashboard() {
@@ -21,6 +24,14 @@ export default function Dashboard() {
   const [pressed,setPressed]=useState([true,false,false,false,false,false,false])
   // Function to render the selected screen
 
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      console.log("User logged out successfully");
+    } catch (error) {
+      console.error("Logout failed:", error.message);
+    }
+  };
   const handleSelection = (index, screen) => {
     setPressed(prev => prev.map((_, i) => i === index)); // Update pressed states
     setSelectedScreen(screen); // Update selected screen
@@ -30,7 +41,7 @@ export default function Dashboard() {
       case "Overview":
         return <Overview />;
       case "Chatbot":
-        return <Chatbot />;
+        return <ChatBott />;
       case "Symptoms Checker":
         return <Disease appointment={setSelectedScreen} pressed={setPressed}/>;
       case "Appointment":
@@ -110,6 +121,7 @@ export default function Dashboard() {
             <p style={{fontSize:"28px",fontWeight:"500"}}>{selectedScreen}</p>
           </div>
           <div style={{display:"flex" ,flexDirection:"row",alignItems:"center",gap:"20px"}}>
+            <button onClick={logout}>Logout</button>
             <p>Name</p>
             <div id="profileIcon">
               <p>D</p>
