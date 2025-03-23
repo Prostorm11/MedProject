@@ -1,9 +1,9 @@
 import React from 'react';
 import Navigation from './Diabetes/naviagation';
 
-function Disease(props) {
+function Disease({appointment,pressed}) {
     return (
-        <Navigation></Navigation>
+        <Navigation appointment={appointment} pressed={pressed}></Navigation>
     );
 }
 

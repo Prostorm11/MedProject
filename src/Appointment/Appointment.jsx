@@ -37,9 +37,37 @@ function Appointment() {
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal">
-          <span className="close" onClick={() => setIsModalOpen(false)}>
-            &times;
-          </span>
+            <span className="close" onClick={() => setIsModalOpen(false)}>
+              &times;
+            </span>
+            <h2>Contact Information</h2>
+
+            {/* Input Fields */}
+            <div className="modal-input">
+              <label>Name:</label>
+              <input type="text" placeholder="Enter your name" />
+            </div>
+
+            <div className="modal-input">
+              <label>Email:</label>
+              <input type="email" placeholder="Enter your email" />
+            </div>
+
+            {/* Buttons */}
+            <div className="modal-buttons">
+              <button className="call-btn">Request Call</button>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://mail.google.com/mail/?view=cm&fs=1&to=marfoofficial111@gmail.com",
+                    "_blank"
+                  )
+                }
+                className="email-btn"
+              >
+                Approach via Email
+              </button>
+            </div>
           </div>
         </div>
       )}

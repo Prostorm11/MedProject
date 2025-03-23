@@ -7,6 +7,7 @@
     gap:30px 10px;
     flex-wrap: wrap;
 }
+/* Modal Overlay */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -17,10 +18,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .modal {
-    background:rgb(255, 189, 255);
+}
+
+/* Modal Box */
+.modal {
+    background: rgb(255, 189, 255);
     width: 40%;
     max-width: 500px;
     border-radius: 15px;
@@ -28,12 +30,77 @@
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     position: relative;
     animation: fadeIn 0.3s ease-in-out;
-  }
-  .close {
+    text-align: center;
+}
+
+/* Close Button */
+.close {
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 24px;
     cursor: pointer;
     color: red;
-  }
+}
+
+/* Input Fields */
+.modal-input {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.modal-input label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.modal-input input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.call-btn {
+    background-color: #ff5757;
+    color: white;
+}
+
+.call-btn:hover {
+    background-color: #cc0000;
+}
+
+.email-btn {
+    background-color: #007bff;
+    color: white;
+    
+   
+}
+
+.email-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

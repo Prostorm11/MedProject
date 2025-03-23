@@ -11,7 +11,7 @@ import touch from "../../Assets/animations/Animation - touch.json"
 import ambulance from "../../Assets/animations/Animation - ambulance.json"
 import Lottie from "lottie-react";
 
-function Navigation(props) {
+function Navigation({appointment,pressed}) {
   const [diseaseSelect, setDiseaseSelect] = useState([true, false, false]);
   const [diabetesDic, setDiabetesDic] = useState({});
   const [breastCancerdic, setBreastCancerdic] = useState({});
@@ -20,6 +20,12 @@ function Navigation(props) {
   const [probability, setProbability] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false); 
 
+
+  function handleAppointment(){
+      pressed([false,false,false,false,true,false,false]);
+      appointment("Appointment")
+
+  }
   function handleDisease(value) {
     if (value === "Diabetes") {
       setDiseaseSelect([true, false, false]);
@@ -166,7 +172,7 @@ function Navigation(props) {
                 <div className="contact-item">
                   <Lottie animationData={ambulance} loop />
                 </div>
-                <div className="contact-item">
+                <div className="contact-item" onClick={handleAppointment}>
                   <Lottie animationData={touch} loop />
                 </div>
               </div>

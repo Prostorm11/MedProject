@@ -32,9 +32,9 @@ export default function Dashboard() {
       case "Chatbot":
         return <Chatbot />;
       case "Symptoms Checker":
-        return <Disease />;
+        return <Disease appointment={setSelectedScreen} pressed={setPressed}/>;
       case "Appointment":
-        return <Appointment />;
+        return <Appointment/>;
       case "Map":
         return <Map />;
       case "Medication Info":
@@ -105,6 +105,17 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="info">
+        <div className="topInfo">
+          <div>
+            <p style={{fontSize:"28px",fontWeight:"500"}}>{selectedScreen}</p>
+          </div>
+          <div style={{display:"flex" ,flexDirection:"row",alignItems:"center",gap:"20px"}}>
+            <p>Name</p>
+            <div id="profileIcon">
+              <p>D</p>
+            </div>
+          </div>
+        </div>
         {renderScreen()}
       </div>
     </div>
