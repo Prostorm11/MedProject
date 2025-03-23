@@ -4,6 +4,12 @@ import Pressable from "../../Reusables/pressable";
 import Diabetes from "./diabetes";
 import Breastcancer from "../BreastCancer/breastcancer";
 import Autism from "../Autism/autism";
+import danger from "../../Assets/animations/Animation - danger.json"
+import healthy from "../../Assets/animations/Animation - healthy.json"
+import missing from "../../Assets/animations/Animation - missing.json"
+import touch from "../../Assets/animations/Animation - touch.json"
+import ambulance from "../../Assets/animations/Animation - ambulance.json"
+import Lottie from "lottie-react";
 
 function Navigation(props) {
   const [diseaseSelect, setDiseaseSelect] = useState([true, false, false]);
@@ -55,7 +61,8 @@ function Navigation(props) {
       } else {
         console.log("Prediction:", data.prediction, "Probability:", data.probability);
         const probabilityOfHavingDisease = data.probability[1]
-        setPredictionResult(`Predicted Outcome: ${data.prediction}`);
+        const result=data.prediction===1?"Positive":"Negative"
+        setPredictionResult(result);
         setProbability(`Probability of having ${selectedDisease}: ${(probabilityOfHavingDisease * 100).toFixed(2)}%`);
       }
   
@@ -129,21 +136,45 @@ function Navigation(props) {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={() => setIsModalOpen(false)}>
-              &times;
-            </span>
-            <div className="predictDetail">
-              <h3>Prediction Result</h3>
-              <p>{predictionResult}</p>
-              <p>{probability}</p>
-            </div>
-            <div className="doctorRequest">
-              <p>Call Doctor</p>
+        <div className="modal-overlay">
+      <div className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={() => setIsModalOpen(false)}>
+            &times;
+          </span>
+          
+          <div className="predictDetail">
+            <h3>Prediction Result</h3>
+            <p className="result-text">{`Predicted Outcome: ${predictionResult}`}</p>
+            <p className="probability-text">{probability}</p>
+            
+            <div className="animation-container">
+              {predictionResult === "Positive" ? (
+                <Lottie animationData={danger} loop />
+              ) : predictionResult === "Negative" ? (
+                <Lottie animationData={healthy} loop />
+              ) : (
+                <Lottie animationData={missing} loop />
+              )}
             </div>
           </div>
+          
+          {predictionResult === "Positive" && (
+            <div className="doctorRequest">
+              <h3>Contact Specialist</h3>
+              <div className="contact">
+                <div className="contact-item">
+                  <Lottie animationData={ambulance} loop />
+                </div>
+                <div className="contact-item">
+                  <Lottie animationData={touch} loop />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
+      </div>
+    </div>
       )}
     </div>
   );
