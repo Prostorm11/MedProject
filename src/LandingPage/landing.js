@@ -9,10 +9,20 @@ import himage3 from "./images/himage3.jpg";
 import himage6 from "./images/himage6.jpg";
 import community from "./images/Community.jpg";
 import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
+import signUp from "./signupbackend";
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+
+  const [loading, setLoading] = useState(false);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      await signUp(formData.email, formData.password);
+      setLoading(false);
+    };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -204,7 +214,7 @@ export default function LandingPage() {
 
       {/* Sign Up Button */}
       <div className="modal-buttons">
-        <button className="signup-btn">Sign Up</button>
+        <button className="signup-btn" onClick={handleSubmit}>{loading ? 'Please wait...' : 'Sign Up'}</button>
       </div>
 
       {/* Continue with Google */}
