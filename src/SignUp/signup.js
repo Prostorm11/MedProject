@@ -7,10 +7,13 @@ import signUp from "./signupbackend";
 export default function SignupScreen() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     await signUp(email, password);
+    setLoading(false);
   };
 
   return (
@@ -42,8 +45,8 @@ export default function SignupScreen() {
             />
           </div>
           <div className="button-container">
-            <button className="my-button" onClick={handleSubmit}>
-              Sign Up
+            <button className="my-button" disabled={loading} onClick={handleSubmit}>
+              {loading ? 'Please wait...' : 'Sign Up'}
             </button>
           </div>
           <p style={{ fontSize: 12, fontStyle: "italic", color: "blue" }}>

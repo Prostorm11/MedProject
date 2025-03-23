@@ -1,0 +1,116 @@
+
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+}
+
+header {
+    background-color: #003087;
+    padding: 10px;
+    text-align: left;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.header-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    color: #003087;
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.layout {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px; /* Adds space between personal details and photo */
+    margin-bottom: 20px;
+}
+
+.personal-details {
+    width: 65%; /* Reduced width to give more space to the photo */
+}
+
+h2 {
+    color: #003087;
+    border-bottom: 2px solid #003087;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.photo-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #e6b0aa;
+    text-align: center;
+    line-height: 150px;
+    color: #fff;
+    flex-shrink: 0; /* Prevents the photo div from shrinking */
+}
+
+.medication table th {
+    background-color: #ddd;
+}
+
+.medication table td {
+    background-color: #f2f2f2;
+}
+
+footer {
+    background-color: #003087;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.medication-input, .dose-input, .reason-input {
+    width: 90%;
+}
